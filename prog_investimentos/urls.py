@@ -22,5 +22,7 @@ urlpatterns = [
     path('',views.pagina_inicial), 
     path('contato/',views.contato, name='contato'),
     path('termo/',views.termo_politicva_privacidade),
-    path('minhaa_historia/',views.minha_historia,name='minhaa_historia')
+    path('minhaa_historia/',views.minha_historia,name='minhaa_historia'),
+    path('novo_investimento/',views.novo_investimento,name='novo_investimento'),
+    path('investimento_registrado/',views.investimento_registrado, name='investimento_registrado')
 ]
