@@ -1,8 +1,7 @@
 from django.shortcuts import render
 from django.shortcuts import HttpResponse
+from .models import Investimento
 
-def pagina_inicial(request):
-    return HttpResponse('Bem vindo''(a)'' a pagina investimentos! É um prazer ter você aqui.')
 
 
 def contato(request):
@@ -30,3 +29,16 @@ def investimento_registrado(request):
         'tipo_investimento': request.POST.get('TipoInvestimento')
     }
     return render(request,'investimentos_ps/investimento_registrado.html',investimento)
+
+def investimentos_leitura(request):
+    dados = {
+        'dados': Investimento.objects.all()
+    }
+    return render(request,'investimentos_ps/investimentosleitura.html',context=dados)
+
+
+def detalhe(request, id_investimento):
+    dados = {
+        'dados': Investimento.objects.get(pk=id_investimento)   
+    }
+    return render(request,'investimentos_ps/detalhe.html',dados)
