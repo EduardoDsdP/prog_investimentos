@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure--c4i8t)ok2_mab)71^2#5z%2*vel46ox0i4r5oy&(mcyn_ijtb'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -79,8 +79,12 @@ WSGI_APPLICATION = 'prog_investimentos.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'postgres', 
+        'USER': 'postgres.scrudduzlylqdzldsxsr', 
+        'PASSWORD': 'Hardflip@2626',
+        'HOST': 'aws-0-us-west-1.pooler.supabase.com', 
+        'PORT': '5432'
     }
 }
 
