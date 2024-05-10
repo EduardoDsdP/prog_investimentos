@@ -12,7 +12,7 @@ def novo_usuario(request):
             # informar o usuario
             usuario = formulario.cleaned_data.get('username')
             messages.success(request, f'O usuario {usuario} foi criado com sucesso!')
-            return redirect('investimentosleitura')
+            return redirect('login')
             # salvar no banco de dados
     else:
         formulario = UserRegisterForm()
