@@ -55,3 +55,27 @@ def criar(request):
             'formulario': investimento_form
         }
         return render(request,'investimentos_ps/novo_investimento.html', context=formulario)
+    
+
+
+
+def editar(request,id_investimento):
+    investimento = Investimento.objects.get(pk=id_investimento)
+    if request.method == 'GET':
+        formulario = InvestimentoForm(instance=investimento)
+        return render(request,'investimentos_ps/novo_investimento.html',{'formulario': formulario})
+    else:
+        formulario = InvestimentoForm(request.POST,instance=investimento)
+        if formulario.is_valid():
+            formulario.save()
+        return redirect('investimentosleitura')    
+    
+
+
+
+def excluir(request,id_investimento):
+    investimento = Investimento.objects.get(pk=id_investimento) 
+    if request.method == 'POST':
+        investimento.delete()
+        return redirect('investimentosleitura')
+    return render(request,'investimentos_ps/confirmar_exclusao.html', {'item': investimento})  
